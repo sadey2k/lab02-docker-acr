@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1-acr01-deployment
+  labels:
+    app: app1-acr01
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app1-acr01
+  template:
+    metadata:
+      labels:
+        app: app1-acr01
+    spec:
+      containers:
+        - name: app1-acr01
+          image: acrsadey2klab01.azurecr.io/apps/my-app01:v1
+          ports:
+            - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-acr01-service
+  labels:
+    app: app1-acr01
+spec:
+  type: LoadBalancer
+  selector:
+    app: app1-acr01
+  ports:
+    - port: 80
+      targetPort: 80
