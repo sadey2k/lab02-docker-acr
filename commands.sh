@@ -89,3 +89,9 @@ git push origin main
 ## any issues run ##
 git push -u origin --all
 
+#######################################################
+### build pipeline and push to acr ###
+#######################################################
+Use preconfigured docker build pipeline  
+Build and push to ACR only 
+pool: ‘TestAgentPool’
